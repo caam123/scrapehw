@@ -59,6 +59,20 @@ app.get("/scrape", function(req, res){
     });
 });
 
+//Route for getting all articles back from DB! 
+
+app.get("/articles", function(req,res){
+    Article.find({})
+    .then(function(dbArticle){
+        res.json(dbArticle);
+    })
+    .catch(function(err){
+        res.json(err);
+    });
+})
+
+
+
 
 app.listen(PORT, function() {
     console.log("App running on port " + PORT + "!");
