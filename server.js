@@ -28,8 +28,16 @@ mongoose.connect("mongodb://localhost/scrapingTarea", { useNewUrlParser: true })
 //var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoScrapingTarea";
 //mongoose.connect(MONGODB_URI);
 
-//Routes
 
+// ========================//
+//                         //
+//         Routes          //
+//                         //
+// ========================//
+
+//====================
+//Route for scraping 
+//====================
 app.get("/scrape", function(req, res){
     axios.get("https://www.theverge.com/tech").then(function(response){
 
@@ -59,8 +67,9 @@ app.get("/scrape", function(req, res){
     });
 });
 
+//=============================================
 //Route for getting all articles back from DB! 
-
+//=============================================
 app.get("/articles", function(req,res){
     Article.find({})
     .then(function(dbArticle){
@@ -71,8 +80,39 @@ app.get("/articles", function(req,res){
     });
 })
 
+//======================================================
+//Route for getting all articles back with ID from DB! 
+//======================================================
+app.get("/articles:id", function(req,res){
+    Article.findOne({_id: req.params.id})
+    .populate("note")
+    .then(function(dbArticle){
+        res.json(dbArticle);
+    })
+    .catch(function(err){
+        res.json(err);
+    });
+});
 
+//=========================================================
+//Route for saving/updating an Article's associated Note
+//=========================================================
+app.post("/article/:id", function(req ,res){
+    Note.create(req.body)
+    .then(function(dbNote){
+        return Article.findOneAndUpdate({_id:req.params.id}, {note: dbNote._id}, {new: true});
+    })
+    .then(function(dbArticle){
+        res.json(dbArticle);
+    })
+    .catch(function(err){
+        res.json(err);
+    });
+});
 
+//=========================================================
+//Starting the server YAY!
+//=========================================================
 
 app.listen(PORT, function() {
     console.log("App running on port " + PORT + "!");
