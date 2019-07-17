@@ -38,11 +38,23 @@ app.get("/scrape", function(req, res){
 
             result.title = $(this).children("a").text();
             result.link = $(this).children("a").attr("href");
-            result.image = $(this).parents().find("image").attr("src");
-            console.log(result.title)
+            result.summary = $(element).parent().parent().children("a").children("div").children("img").attr("alt");
+/*             console.log(result.title)
             console.log(result.link);
-            console.log(result.image)
+            console.log("==========================");
+            console.log(result.summary);
+            console.log("========================"); */
+
+            db.Article.create(result)
+            .then(function(dbArticle){
+                console.log(dbArticle);
+            })
+            .catch(function(err){
+                console.log(err);
+            });
+
         });
+
 
         res.send("Scraping Completed");
 
