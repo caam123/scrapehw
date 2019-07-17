@@ -7,6 +7,8 @@ var cheerio = require("cheerio");
 
 var db = require("./models");
 
+var Article = require("./models/Article.js")
+
 var PORT = 3000;
 
 var app = express();
@@ -35,33 +37,26 @@ app.get("/scrape", function(req, res){
 
         $("div h2").each(function(i,element){
             var result = {};
-
             result.title = $(this).children("a").text();
             result.link = $(this).children("a").attr("href");
-            result.summary = $(element).parent().parent().children("a").children("div").children("img").attr("alt");
+/*             result.summary = $(element).parent().parent().children("a").children("div").children("img").attr("alt"); */
 /*             console.log(result.title)
             console.log(result.link);
             console.log("==========================");
             console.log(result.summary);
             console.log("========================"); */
 
-            db.Article.create(result)
-            .then(function(dbArticle){
-                console.log(dbArticle);
+            console.log(result);
+
+            Article.create(result)
+            .then(function(dbArticle) {
+              // View the added result in the console
+              console.log(dbArticle);
             })
-            .catch(function(err){
-                console.log(err);
-            });
 
         });
-
-
         res.send("Scraping Completed");
-
     });
-
-//console.log(result);
-
 });
 
 
