@@ -1,0 +1,64 @@
+body { 
+    background-color: #d2d2d2;
+    font-family: 'Roboto', sans-serif;
+  };
+  
+  
+nav{
+    width:100vw;
+    background-color: black;
+}
+
+
+.main-nav{
+    display:flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    height: 50px;
+    border-bottom: 1px solid gold;
+    background-color: black;
+    color: gold;
+    list-style-type: none;
+}
+
+.main-nav a{
+    color:gold;
+}
+
+li.nav-item{
+    padding: 10px 30px;
+}
+
+
+
+
+
+  #wrapper {
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 5%;
+  }
+  #articles {
+    display: inline-block;
+    overflow: auto;
+    width: 60%;
+    height: 700px;
+  }
+  #notes {
+    float: right;
+    width: 30%;
+  }
+  textarea, input {
+    display: block;
+    width: 100%;
+    background-color: #FCF5C7;
+  }
+  input {
+    height: 36px;
+    font-size: 24px;
+  }
+  textarea {
+    height: 200px;
+    font-size: 18px;
+  }

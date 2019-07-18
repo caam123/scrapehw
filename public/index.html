@@ -4,45 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=DM+Serif+Display|Roboto:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles/main.css">
     <title>Scraping News</title>
 </head>
-<style>
-    body { background-color: #F2F6D0 }
-    #wrapper {
-      width: 960px;
-      margin-left: auto;
-      margin-right: auto;
-      padding-top: 5%;
-    }
-    #articles {
-      display: inline-block;
-      overflow: auto;
-      width: 60%;
-      height: 700px;
-    }
-    #notes {
-      float: right;
-      width: 30%;
-    }
-    textarea, input {
-      display: block;
-      width: 100%;
-      background-color: #FCF5C7;
-    }
-    input {
-      height: 36px;
-      font-size: 24px;
-    }
-    textarea {
-      height: 200px;
-      font-size: 18px;
-    }
-  </style>
-</head>
+    
 
 <body>
+  <nav>
+      <ul class="main-nav">
+        <li class="nav-item"> <a href="#">Home</a></li>
+        <li class="nav-item"><a href="#">Saved Articles</a></li>
+        <li class="nav-item"><Button>Clear All articles</Button></li>
+      </ul>
+  </nav>
+
   <div id="wrapper">
     <h1>Note Scraper</h1>
+
     <div id="articles"></div>
     <div id="notes"></div>
   </div>
