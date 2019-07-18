@@ -64,6 +64,7 @@ app.get("/scrape", function(req, res){
 
         });
         res.send("Scraping Completed");
+        window.location.href("../");
     });
 });
 
