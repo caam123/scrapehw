@@ -40,9 +40,8 @@ li.nav-item{
     padding-top: 5%;
   }
   #articles {
-    display: inline-block;
-    overflow: auto;
-    width: 60%;
+    /*overflow: auto;*/
+    width: 80%;
     height: 700px;
   }
   #notes {
@@ -61,4 +60,19 @@ li.nav-item{
   textarea {
     height: 200px;
     font-size: 18px;
+  }
+
+h3{
+    font-family: 'Passion One', cursive;
+    font-size: 25px;
+
+}
+
+  .card{
+      margin-bottom:20px;
+  }
+
+  .btn{
+      padding:5px;
+      font-size: 12px;
   }

@@ -4,12 +4,12 @@
 
 $.getJSON("/articles", function(data){
     for (var i = 0; i < data.length; i++) {
-        $("#articles").append(card);
 /*         $("#articles").append("<p data-id='"+ data[i]._id + "'>" + data[i].title + "<br/>" + data[i].link + "</p>"); */
         
         var card = $("<div>");
-        card.addClass("card-title");
+        card.addClass("card");
         card.attr("data-id", data[i]._id);
+        $("#articles").append(card);
 
         var cardBody = $("<div>");
         cardBody.addClass("card-body");
@@ -20,10 +20,16 @@ $.getJSON("/articles", function(data){
         cardTitle.text(data[i].title);
         cardBody.append(cardTitle);
 
+        var cardParagraph = $("<p>");
+        cardParagraph.addClass("card-text");
+        cardParagraph.text(data[i].summary);
+        cardBody.append(cardParagraph);
+
         var button = $("<a>");
-        button.addClass("bt btn-primary");
+        button.addClass("btn")
+        button.addClass("btn-primary");
         button.attr("href", data[i].link)
-        button.text("See more");
+        button.text("Full Article");
         cardBody.append(button);
     }
 })

@@ -47,12 +47,12 @@ app.get("/scrape", function(req, res){
             var result = {};
             result.title = $(this).children("a").text();
             result.link = $(this).children("a").attr("href");
-/*             result.summary = $(element).parent().parent().children("a").children("div").children("img").attr("alt"); */
-/*             console.log(result.title)
+            result.summary = $(element).parent().parent().children("a").children("div").children("img").attr("alt");
+            console.log(result.title)
             console.log(result.link);
             console.log("==========================");
             console.log(result.summary);
-            console.log("========================"); */
+            console.log("========================");
 
             console.log(result);
 

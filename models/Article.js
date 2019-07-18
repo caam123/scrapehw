@@ -11,6 +11,10 @@ var ArticleSchema = new Schema({
         type: String,
         required: true
     },
+    summary: {
+        type: String,
+        required: true
+    },
     //this allows us to populate the Article with an associated Note
     note: {
         type: Schema.Types.ObjectId,
