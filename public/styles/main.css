@@ -35,23 +35,25 @@ li.nav-item{
 
   #wrapper {
     width: 90vw;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
     padding-top: 5%;
   }
   #articles {
     /*overflow: auto;*/
-    width: 80%;
+    width: 60%;
     height: 700px;
+    float:left;
   }
   #notes {
-    float: right;
+    float: left;
     width: 30%;
+    margin-left:5%;
   }
   textarea, input {
     display: block;
     width: 100%;
-    background-color: #FCF5C7;
+    background-color: #f7f7f7;
+    margin-bottom: 10px;
   }
   input {
     height: 36px;
@@ -75,4 +77,15 @@ h3{
   .btn{
       padding:5px;
       font-size: 12px;
+  }
+
+  span{
+      color:gray;
+      padding: 5px 0 0 10px;
+      font-size: 12px;
+  }
+
+  .note-title{
+      color: #505050;
+      font-size: 20px;
   }

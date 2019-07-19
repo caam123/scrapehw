@@ -8,6 +8,7 @@ var cheerio = require("cheerio");
 var db = require("./models");
 
 var Article = require("./models/Article.js")
+var Note = require("./models/Note.js")
 
 var PORT = 3000;
 
@@ -79,12 +80,12 @@ app.get("/articles", function(req,res){
     .catch(function(err){
         res.json(err);
     });
-})
+});
 
 //======================================================
 //Route for getting all articles back with ID from DB! 
 //======================================================
-app.get("/articles:id", function(req,res){
+app.get("/articles/:id", function(req, res){
     Article.findOne({_id: req.params.id})
     .populate("note")
     .then(function(dbArticle){
@@ -98,7 +99,7 @@ app.get("/articles:id", function(req,res){
 //=========================================================
 //Route for saving/updating an Article's associated Note
 //=========================================================
-app.post("/article/:id", function(req ,res){
+app.post("/articles/:id", function(req ,res){
     Note.create(req.body)
     .then(function(dbNote){
         return Article.findOneAndUpdate({_id:req.params.id}, {note: dbNote._id}, {new: true});
