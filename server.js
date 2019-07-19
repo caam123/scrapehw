@@ -112,6 +112,39 @@ app.post("/articles/:id", function(req ,res){
     });
 });
 
+
+app.get("/notes", function(req,res){
+    Note.find({})
+    .then(function(dbNote){
+        res.json(dbNote);
+    })
+    .catch(function(err){
+        res.json(err);
+    });
+});
+
+
+app.get("/notes/:id", function(req, res){
+    Note.findOne({_id: req.params.id})
+    .then(function(dbNote){
+        res.json(dbNote);
+    })
+    .catch(function(err){
+        res.json(err);
+    });
+});
+
+
+app.put("/notes/:id", function(req, res){
+    Note.remove({_id: req.params.id})
+    .then(function(dbNote){
+        res.json(dbNote);
+    })
+    .catch(function(err){
+        res.json(err);
+    });
+});
+
 //=========================================================
 //Starting the server YAY!
 //=========================================================

@@ -44,6 +44,8 @@ function showArticles(articles){
     });    
 };
 
+
+
 $(document).ready(function(){
     showArticles();
 })
@@ -115,6 +117,8 @@ $(document).on("click", "span", function(){
         cardTitle.text(data.title);
         cardBody.append(cardTitle);
 
+
+
         var input = $("<textarea>");
         input.addClass("card-text");
         input.attr("id", "bodyInput")
@@ -128,9 +132,18 @@ $(document).on("click", "span", function(){
         button.text("Save Note");
         cardBody.append(button);
 
-        if(data.note){
-            $(input).val(data.note.body);
+         if(data.note){
+                var noteContainer = $("<div class='note-container'/>")          
+                var notes = $("<div>");
+                notes.addClass("card-text, card-note");
+                notes.text(data.note.body);
+                notes.append("<button class='btn btn-danger note-delete'>x</button>");
+                notes.children("button").attr("_id", data.note._id);
+                noteContainer.prepend("<h4 class='card-title'>Notes</h4");
+                noteContainer.append(notes);
+                cardBody.append(noteContainer);         
         }
+
     });
 });
 
@@ -155,5 +168,42 @@ $(document).on("click", ".save-note", function(){
 
     $("#bodyInput").val();
 
+
 });
 
+
+$(document).on("click", ".note-delete", function(){
+
+    var thisID = $(this).attr("_id");
+     $.ajax({
+        method:"PUT",
+        url:"/notes/" + thisID
+    }).then(function(){
+        alert("Deleted note");
+        $("#notes").empty();
+    })
+})
+
+
+/* function displayNotes(data){
+
+    var savedNotes = [];
+    var currentNote;
+
+    if(!data.note.length){
+        currentNote = $("<div class='card')> No notes saved yet </div>");
+        savedNotes.push(currentNote);
+    }else{
+        for (var i = 0; i < data.note.length; i++) {
+            var currentNote = $("<div>");
+            currentNote.addClass("card");
+            currentNote.text(data.note[i].body);
+            currentNote.append("<button class='btn btn-danger note-delete'>x</button>");
+            currentNote.children("button").data("_id", data.note[i]._id);
+            savedNotes.push(currentNote);                         
+        }
+    }
+    cardBody.prepend(savedNotes);   
+};
+displayNotes(data);
+ */
