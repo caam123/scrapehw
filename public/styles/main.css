@@ -39,7 +39,7 @@ li.nav-item{
     padding-top: 5%;
   }
   #articles {
-    /*overflow: auto;*/
+    overflow: auto;
     width: 60%;
     height: 700px;
     float:left;
