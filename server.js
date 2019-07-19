@@ -23,11 +23,11 @@ app.use(express.static("public"));
 
 //Connecting to MongoDB
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/scrapingTarea", { useNewUrlParser: true });
+//mongoose.connect("mongodb://localhost/scrapingTarea", { useNewUrlParser: true });
 
 
-//var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoScrapingTarea";
-//mongoose.connect(MONGODB_URI);
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://username:pass123@ds151997.mlab.com:51997/heroku_t97p5825"
+mongoose.connect(MONGODB_URI);
 
 
 // ========================//
